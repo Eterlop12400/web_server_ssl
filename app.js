@@ -38,7 +38,13 @@ http.createServer(function (req, res) {
                     })
 
                     if (ext === '.html') {
-                        res.write(`<script>document.getElementById('active-link').style.color = 'magenta'; </script>`);
+                        res.write(`
+                            <script>
+                                window.addEventListener('load', (event) => {
+                                  document.querySelector('#active-link').style.color = 'yellow';
+                                });
+                            </script>
+                        `);
                     }
                     res.end(data, 'utf-8')
                 }

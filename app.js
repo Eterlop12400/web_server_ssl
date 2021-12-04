@@ -9,8 +9,6 @@ http.createServer(function (req, res) {
     let parsed = url.parse(req.url);
     let filename = path.parse(parsed.pathname)
 
-
-
     let filen = filename.name === "" ? "index" : filename.name;
     let ext = filename.ext === "" ? ".html" : filename.ext;
     let dir = filename.dir === "/" ? "" : filename.dir;
@@ -37,7 +35,7 @@ http.createServer(function (req, res) {
                         'Content-Type': mimetypes[ext]
                     })
 
-                    if (ext === '.html') {
+                    if (ext === '.html') { // If the extension is .html then we will as a onload event to add styling.
                         res.write(`
                             <script>
                                 window.addEventListener('load', (event) => {
